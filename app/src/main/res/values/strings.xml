@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">countrysearch</string>
+    <string name="welcome_to_country_search">Welcome To Country Search</string>
+    <string name="main_enter_a_country">Enter a Country</string>
+    <string name="main_button_search">Search</string>
 </resources>
