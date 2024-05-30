@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/client_cardview"
+        android:id="@+id/list_country_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
@@ -25,13 +25,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.058"
-                app:layout_constraintStart_toEndOf="@+id/country_list_flag_imageview"
+                app:layout_constraintStart_toEndOf="@+id/list_country_flag_imageview"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.052"
                 tool:text="@tools:sample/cities" />
 
             <ImageView
-                android:id="@+id/country_list_flag_imageview"
+                android:id="@+id/list_country_flag_imageview"
                 android:layout_width="135dp"
                 android:layout_height="87dp"
                 android:layout_margin="4dp"
@@ -49,7 +49,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.044"
-                app:layout_constraintStart_toEndOf="@+id/country_list_flag_imageview"
+                app:layout_constraintStart_toEndOf="@+id/list_country_flag_imageview"
                 app:layout_constraintTop_toBottomOf="@+id/list_country_country_textview"
                 app:layout_constraintVertical_bias="0.203"
                 tool:text="Capital : Paris" />
@@ -60,8 +60,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
-                app:layout_constraintStart_toEndOf="@+id/country_list_flag_imageview"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/list_country_flag_imageview"
                 app:layout_constraintTop_toBottomOf="@+id/list_country_capital_textview"
                 app:layout_constraintVertical_bias="0.0"
                 tool:text="Continent : Europe" />
@@ -73,7 +73,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.059"
-                app:layout_constraintStart_toEndOf="@+id/country_list_flag_imageview"
+                app:layout_constraintStart_toEndOf="@+id/list_country_flag_imageview"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.948"
                 tool:text="Population : 9999999" />
