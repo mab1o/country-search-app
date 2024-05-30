@@ -3,4 +3,5 @@
     <string name="welcome_to_country_search">Welcome To Country Search</string>
     <string name="main_enter_a_country">Enter a Country</string>
     <string name="main_button_search">Search</string>
+    <string name="list_country_population">Population</string>
 </resources>
