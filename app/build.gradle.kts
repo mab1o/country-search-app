@@ -43,7 +43,6 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -57,6 +56,7 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
 
-    // google maps
-    implementation(libs.play.services.maps)
+    // OpenStreetMap
+    implementation(libs.osmdroid.android)
+    implementation(libs.osmdroid.osmdroid.mapsforge)
 }

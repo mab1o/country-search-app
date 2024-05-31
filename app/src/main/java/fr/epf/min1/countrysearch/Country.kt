@@ -10,7 +10,9 @@ data class Country(
     val capital : String,
     val population : Long,
     val flag : String,
-    val map : String
+    val lat : Double,
+    val lng : Double,
+    val area: Long,
 ) : Parcelable {
     companion object {
         fun generateCountry(size: Int = 10) =
@@ -20,7 +22,9 @@ data class Country(
                     "capital${it}",
                     it.toLong(),
                     "https://flagcdn.com/w320/yt.png",
-                    "https://goo.gl/maps/1e7MXmfBwQv3TQGF7")
+                    59.0,
+                    26.0,
+                    45227)
             }
     }
 }

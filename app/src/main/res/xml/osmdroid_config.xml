@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.osmdroid.config xmlns:osmdroid="http://schemas.android.com/apk/res-auto">
+    <osmdroid:osmdroidBasePath value="osmdroid" />
+    <osmdroid:osmdroidTileCache value="tile" />
+</org.osmdroid.config>

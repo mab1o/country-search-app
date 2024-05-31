@@ -14,38 +14,51 @@
         android:id="@+id/details_country_flag_imageview"
         android:layout_width="157dp"
         android:layout_height="88dp"
-        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/details_country_capital_textview"
         app:layout_constraintEnd_toStartOf="@+id/details_country_country_textview"
-        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126"
+        app:layout_constraintVertical_bias="0.142"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/details_country_country_textview"
         android:layout_width="134dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        app:layout_constraintBottom_toTopOf="@+id/details_country_map"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212"
+        app:layout_constraintVertical_bias="0.028"
         tools:text="@tools:sample/cities" />
 
     <TextView
         android:id="@+id/details_country_population_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
-        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        android:layout_marginTop="184dp"
+        app:layout_constraintBottom_toTopOf="@+id/details_country_map"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_country_country_textview"
-        app:layout_constraintVertical_bias="1.0"
         tools:text="Population: 9999999" />
+
+    <TextView
+        android:id="@+id/details_country_continent_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/details_country_population_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_country_country_textview"
+        app:layout_constraintVertical_bias="0.824"
+        tools:text="Continent : Europe" />
 
     <TextView
         android:id="@+id/details_country_capital_textview"
@@ -60,27 +73,15 @@
         app:layout_constraintVertical_bias="1.0"
         tools:text="Capital: Paris" />
 
-    <TextView
-        android:id="@+id/details_country_continent_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_population_textview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/details_country_country_textview"
-        app:layout_constraintVertical_bias="0.834"
-        tools:text="Continent : Europe" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="328dp"
-        android:layout_height="272dp"
+    <org.osmdroid.views.MapView
+        android:id="@+id/details_country_map"
+        android:layout_width="323dp"
+        android:layout_height="328dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.919" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
