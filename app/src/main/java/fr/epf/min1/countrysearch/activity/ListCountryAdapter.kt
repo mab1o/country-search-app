@@ -1,7 +1,6 @@
-package fr.epf.min1.countrysearch
+package fr.epf.min1.countrysearch.activity
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import fr.epf.min1.countrysearch.data.Country
+import fr.epf.min1.countrysearch.R
+import fr.epf.min1.countrysearch.data.click
 
 private const val TAG = "CountryViewHolder"
 const val COUNTRY_EXTRA = "details_country"
@@ -56,7 +58,7 @@ class ListCountryAdapter(val countries : List<Country>) : RecyclerView.Adapter<C
         card.click {
             with(it.context) {
                 val intent = Intent(this, DetailsCountryActivity::class.java)
-                intent.putExtra(COUNTRY_EXTRA, country)
+                intent.putExtra(fr.epf.min1.countrysearch.activity.COUNTRY_EXTRA, country)
                 startActivity(intent)
             }
         }

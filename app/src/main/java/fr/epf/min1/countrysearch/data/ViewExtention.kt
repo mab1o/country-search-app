@@ -1,4 +1,4 @@
-package fr.epf.min1.countrysearch
+package fr.epf.min1.countrysearch.data
 
 import android.util.Log
 import android.view.View

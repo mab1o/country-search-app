@@ -1,4 +1,4 @@
-package fr.epf.min1.countrysearch
+package fr.epf.min1.countrysearch.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -12,7 +12,7 @@ data class Country(
     val flag : String,
     val lat : Double,
     val lng : Double,
-    val area: Long,
+    val area: Double,
 ) : Parcelable {
     companion object {
         fun generateCountry(size: Int = 10) =
@@ -24,7 +24,7 @@ data class Country(
                     "https://flagcdn.com/w320/yt.png",
                     59.0,
                     26.0,
-                    45227)
+                    45227.0)
             }
     }
 }

@@ -1,21 +1,21 @@
-package fr.epf.min1.countrysearch
+package fr.epf.min1.countrysearch.activity
 
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import fr.epf.min1.countrysearch.data.Country
+import fr.epf.min1.countrysearch.R
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 
 private const val TAG = "DetailsCountryActivity"
-
 class DetailsCountryActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -23,8 +23,7 @@ class DetailsCountryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Load osmdroid configuration
-        Configuration
-            .getInstance()
+        Configuration.getInstance()
             .load(applicationContext, getSharedPreferences("osmdroid", MODE_PRIVATE));
 
         setContentView(R.layout.activity_details_country)
@@ -56,7 +55,7 @@ class DetailsCountryActivity : AppCompatActivity() {
                     .into(flagImageview)
 
                 val zoom = 5.0
-                Log.d(TAG,zoom.toString())
+                Log.d(TAG, zoom.toString())
                 map.controller.setZoom(zoom)
                 val startPoint = GeoPoint(lat, lng)
                 map.controller.setCenter(startPoint)
