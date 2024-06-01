@@ -15,8 +15,12 @@ osmdroid-android = "6.1.10"
 osmdroid-mapsforge = "6.1.10"
 retrofit = "2.11.0"
 play-services-maps = "18.2.0"
+room-runtime = "2.6.1"
 
 [libraries]
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-runtime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-runtime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-runtime" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converter-moshi" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }

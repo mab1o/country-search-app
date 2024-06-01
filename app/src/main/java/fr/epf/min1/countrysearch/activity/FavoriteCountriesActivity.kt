@@ -2,10 +2,16 @@ package fr.epf.min1.countrysearch.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import fr.epf.min1.countrysearch.R
 import fr.epf.min1.countrysearch.data.Country
+import fr.epf.min1.countrysearch.localstorage.AppDataBase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class FavoriteCountriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +24,16 @@ class FavoriteCountriesActivity : AppCompatActivity() {
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        recyclerView.adapter = ListCountryAdapter(Country.generateCountry())
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDataBase::class.java, "favorite-countries-db"
+        ).build()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val countries = db.countryDao().getAll()
+            runOnUiThread {
+                recyclerView.adapter = ListCountryAdapter(countries)
+            }
+        }
     }
 }

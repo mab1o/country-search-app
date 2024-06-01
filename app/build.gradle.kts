@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
@@ -59,4 +60,9 @@ dependencies {
     // OpenStreetMap
     implementation(libs.osmdroid.android)
     implementation(libs.osmdroid.osmdroid.mapsforge)
+
+    // Room - local storage
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }

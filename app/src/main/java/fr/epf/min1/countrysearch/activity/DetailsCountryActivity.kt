@@ -3,19 +3,28 @@ package fr.epf.min1.countrysearch.activity
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.bumptech.glide.Glide
 import fr.epf.min1.countrysearch.data.Country
 import fr.epf.min1.countrysearch.R
+import fr.epf.min1.countrysearch.localstorage.AppDataBase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 
 private const val TAG = "DetailsCountryActivity"
+
 class DetailsCountryActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -27,7 +36,12 @@ class DetailsCountryActivity : AppCompatActivity() {
             .load(applicationContext, getSharedPreferences("osmdroid", MODE_PRIVATE));
 
         setContentView(R.layout.activity_details_country)
+
+        // set info on screen
         setCountryInfoAndFlag()
+
+        // put country in favorite
+        setButtonToAddInFavorite()
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -60,6 +74,30 @@ class DetailsCountryActivity : AppCompatActivity() {
                 val startPoint = GeoPoint(lat, lng)
                 map.controller.setCenter(startPoint)
             }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun setButtonToAddInFavorite() {
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDataBase::class.java, "favorite-countries-db"
+        ).build()
+
+        val favoriteCountryButton =
+            findViewById<ImageButton>(R.id.details_country_favorite_imagebutton)
+
+        lifecycleScope.launch(Dispatchers.IO){
+            val country = intent.extras?.getParcelable(COUNTRY_EXTRA, Country::class.java)
+            if (country != null) {
+                lifecycleScope.launch(Dispatchers.IO) {
+                    db.countryDao().insertAll(country)
+                }
+            }
+            Toast.makeText(
+                this@DetailsCountryActivity,
+                "This country has been add to your favorite", Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

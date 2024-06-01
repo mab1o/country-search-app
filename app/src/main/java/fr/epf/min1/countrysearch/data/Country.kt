@@ -1,11 +1,14 @@
 package fr.epf.min1.countrysearch.data
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity
 data class Country(
-    val name : String,
+    @PrimaryKey val name : String,
     val continent : String,
     val capital : String,
     val population : Long,
