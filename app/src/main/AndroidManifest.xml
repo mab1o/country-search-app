@@ -14,9 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Countrysearch"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.FavoriteCountriesActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="org.osmdroid.config"
             android:resource="@xml/osmdroid_config" />
+
         <activity
             android:name=".activity.DetailsCountryActivity"
             android:exported="false" />

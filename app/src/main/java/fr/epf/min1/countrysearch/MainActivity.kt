@@ -1,13 +1,16 @@
 package fr.epf.min1.countrysearch
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import fr.epf.min1.countrysearch.activity.FavoriteCountriesActivity
 import fr.epf.min1.countrysearch.activity.ListCountryAdapter
 import fr.epf.min1.countrysearch.api.CountryService
 import fr.epf.min1.countrysearch.api.Retrofit
@@ -34,6 +37,20 @@ class MainActivity : AppCompatActivity() {
 
         // find country by Name
         setSearchButtonOnclick()
+
+        // set button to go to favorite page
+        setFavoriteButtonOnClick()
+    }
+
+    private fun setFavoriteButtonOnClick() {
+        val favoriteButton = findViewById<ImageButton>(R.id.main_favorite_imagebutton)
+        favoriteButton.setOnClickListener {
+            val intent = Intent(
+                this,
+                FavoriteCountriesActivity::class.java
+            )
+            startActivity(intent)
+        }
     }
 
     private fun setSearchButtonOnclick() {
