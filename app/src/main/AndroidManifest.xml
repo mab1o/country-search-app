@@ -21,6 +21,9 @@
         <meta-data
             android:name="org.osmdroid.config"
             android:resource="@xml/osmdroid_config" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".activity.DetailsCountryActivity"

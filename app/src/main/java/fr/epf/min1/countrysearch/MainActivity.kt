@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun tryToFetchCountry(countryService: CountryService, searchName: String)
             : List<Country> {
-        val maxRetries = 3
+        val maxRetries = 5
         var currentRetry = 0
         var success = false
         var countriesList: List<Country> = emptyList()
@@ -100,13 +100,15 @@ class MainActivity : AppCompatActivity() {
         while (currentRetry < maxRetries && !success) {
             Log.d(TAG, "Reaching API: try n°${currentRetry + 1} of $maxRetries")
             try {
+                Log.d(TAG, searchName)
                 val response = countryService.getCountryByName(searchName)
                 if (response.isSuccessful && response.body() != null) {
                     Log.d(TAG, "${response.body()!!}")
                     countriesList = response.body()!!.map { it.toCountry() }
                     success = true
                 }
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                Log.d(TAG, e.stackTraceToString())
             }
             currentRetry++
         }

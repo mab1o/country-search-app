@@ -4,100 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp"
-    tools:context=".activity.DetailsCountryActivity">
+    android:padding="16dp"
+    tools:context=".activity.DetailsCountryActivity"
+    tools:ignore="ExtraText">
 
+    <!-- Horizontal Guidelines for consistent spacing -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <!-- Vertical Guidelines for consistent spacing -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="16dp" />
+
+    <!-- Country Flag -->
     <ImageView
         android:id="@+id/details_country_flag_imageview"
-        android:layout_width="157dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_capital_textview"
-        app:layout_constraintEnd_toStartOf="@+id/details_country_country_textview"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:contentDescription="@string/details_country_map_description" />
+        android:layout_width="145dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/details_country_map_description"
+        app:layout_constraintBottom_toTopOf="@id/details_country_capital_textview"
+        app:layout_constraintEnd_toStartOf="@id/details_country_country_textview"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.4"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
+    <!-- Country Name -->
     <TextView
         android:id="@+id/details_country_country_textview"
-        android:layout_width="134dp"
+        style="@style/TitleStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_map"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.786"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028"
+        app:layout_constraintBottom_toBottomOf="@id/details_country_flag_imageview"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toEndOf="@id/details_country_flag_imageview"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
         tools:text="@tools:sample/cities" />
 
-    <TextView
-        android:id="@+id/details_country_population_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_map"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/details_country_country_textview"
-        tools:text="Population: 9999999" />
-
-    <TextView
-        android:id="@+id/details_country_continent_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_population_textview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/details_country_country_textview"
-        app:layout_constraintVertical_bias="0.824"
-        tools:text="Continent : Europe" />
-
+    <!-- Capital -->
     <TextView
         android:id="@+id/details_country_capital_textview"
-        android:layout_width="wrap_content"
+        style="@style/BodyTextStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_continent_textview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/details_country_flag_imageview"
         tools:text="Capital: Paris" />
 
+    <!-- Continent -->
+    <TextView
+        android:id="@+id/details_country_continent_textview"
+        style="@style/BodyTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/details_country_capital_textview"
+        tools:text="Continent : Europe" />
+
+    <!-- Population -->
+    <TextView
+        android:id="@+id/details_country_population_textview"
+        style="@style/BodyTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/details_country_continent_textview"
+        tools:text="Population: 9999999" />
+
+    <!-- Map View -->
     <org.osmdroid.views.MapView
         android:id="@+id/details_country_map"
-        android:layout_width="323dp"
-        android:layout_height="328dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/details_country_population_textview" />
 
+    <!-- Favorite Button -->
     <ImageButton
         android:id="@+id/details_country_favorite_imagebutton"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_margin="8dp"
         android:background="@drawable/round_button"
         android:contentDescription="@string/details_country_add_favorite_button"
         android:tint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/details_country_capital_textview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.787"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837"
         app:srcCompat="@drawable/star_24"
         tools:ignore="UseAppTint" />
 

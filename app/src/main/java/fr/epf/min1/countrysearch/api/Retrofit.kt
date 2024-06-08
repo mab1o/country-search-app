@@ -7,7 +7,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 class Retrofit {
-    companion object{
+    companion object {
         private val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -15,8 +15,8 @@ class Retrofit {
         // increase time response cause restcountry is slow
         private val client = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
             .build()
 
         private val retrofit = Retrofit.Builder()
@@ -25,7 +25,7 @@ class Retrofit {
             .client(client)
             .build()
 
-        fun getInstance(): Retrofit{
+        fun getInstance(): Retrofit {
             return retrofit
         }
     }

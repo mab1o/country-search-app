@@ -9,4 +9,5 @@
     <string name="favorite_countries_title">Your Favorite Countries</string>
     <string name="details_country_add_favorite_button">Button to addd or delete this country in your favorite list</string>
     <string name="details_country_map_description">map of the country</string>
+    <string name="list_country_flag_description">Flag of a country</string>
 </resources>

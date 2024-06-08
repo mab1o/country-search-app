@@ -17,10 +17,10 @@ private const val TAG = "CountryViewHolder"
 const val COUNTRY_EXTRA = "details_country"
 
 class CountryViewHolder(item: View) : RecyclerView.ViewHolder(item)
-class ListCountryAdapter(val countries : List<Country>) : RecyclerView.Adapter<CountryViewHolder>() {
+class ListCountryAdapter(val countries: List<Country>) : RecyclerView.Adapter<CountryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.list_country, parent,false)
+        val view = layoutInflater.inflate(R.layout.list_country, parent, false)
         return CountryViewHolder(view)
     }
 
@@ -35,15 +35,9 @@ class ListCountryAdapter(val countries : List<Country>) : RecyclerView.Adapter<C
 
     private fun fillInInfo(view: View, country: Country) {
         val countryTextView = view.findViewById<TextView>(R.id.list_country_country_textview)
-        val capitalTextView = view.findViewById<TextView>(R.id.list_country_capital_textview)
-        val continentTextView = view.findViewById<TextView>(R.id.list_country_continent_textview)
-        val populationTextView = view.findViewById<TextView>(R.id.list_country_population_textview)
         val flagImageview = view.findViewById<ImageView>(R.id.list_country_flag_imageview)
 
         countryTextView.text = country.name
-        capitalTextView.text = "Capital: ${country.capital}"
-        continentTextView.text = "Continent: ${country.continent}"
-        populationTextView.text = "Population: ${country.population}"
 
         // add the flag image
         Glide.with(view.context)

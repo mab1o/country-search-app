@@ -17,7 +17,6 @@ import fr.epf.min1.countrysearch.R
 import fr.epf.min1.countrysearch.localstorage.AppDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
@@ -87,7 +86,9 @@ class DetailsCountryActivity : AppCompatActivity() {
         val favoriteCountryButton =
             findViewById<ImageButton>(R.id.details_country_favorite_imagebutton)
 
-        lifecycleScope.launch(Dispatchers.IO){
+        TODO("click button to save in favorite")
+
+        lifecycleScope.launch(Dispatchers.IO) {
             val country = intent.extras?.getParcelable(COUNTRY_EXTRA, Country::class.java)
             if (country != null) {
                 lifecycleScope.launch(Dispatchers.IO) {
