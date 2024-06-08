@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun tryToFetchCountry(countryService: CountryService, searchName: String)
             : List<Country> {
-        val maxRetries = 10
+        val maxRetries = 6
         var currentRetry = 0
         var success = false
         var countriesList: List<Country> = emptyList()

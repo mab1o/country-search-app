@@ -9,6 +9,9 @@ L'application permet aux utilisateurs de rechercher des informations sur les pay
 3. **Fiche d’un Pays** :  Permet d'afficher les détails d'un pays sélectionné depuis la liste des résultats.
 4. **Favoris** :  Permet de mettre certains pays en favoris afin de pouvoir les consulter sans connexion Internet.
 
+## Fonctionnalités Suplémentaires
+* **Map du pays** : Affichage de la carte du pays dans la fiche du pays
+
 ## Liens Utiles
 * [Rest Countries API](https://restcountries.com/)
 * [Android Developers](https://developer.android.com)
@@ -23,7 +26,7 @@ L'application permet aux utilisateurs de rechercher des informations sur les pay
 
 ## Documentation Utilisateur
 * Recherche de Pays
-    * Dans la barre de recherche de l'application, entrez une partie du nom d'un pays ou de sa capitale.
+    * Dans la barre de recherche de l'application, entrez une partie du nom d'un pays.
     * Les résultats s'afficheront sous forme de liste avec les drapeaux et les noms des pays correspondants.
 * Affichage des Fiches de Pays
     * Cliquez sur un pays dans la liste des résultats pour voir les détails complets de ce pays.
