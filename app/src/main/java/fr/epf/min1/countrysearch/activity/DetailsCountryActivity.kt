@@ -18,6 +18,7 @@ import fr.epf.min1.countrysearch.data.click
 import fr.epf.min1.countrysearch.localstorage.AppDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -29,6 +30,7 @@ private const val TAG = "DetailsCountryActivity"
 class DetailsCountryActivity : AppCompatActivity() {
 
     private var country: Country? = null
+    private lateinit var favoriteCountryButton: ImageButton
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,15 +42,24 @@ class DetailsCountryActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_details_country)
 
+        // init variables
         intent.extras?.apply {
             country = this.getParcelable(COUNTRY_EXTRA, Country::class.java)
         }
+        favoriteCountryButton =
+            findViewById<ImageButton>(R.id.details_country_favorite_imagebutton)
 
         // set info on screen
         setCountryInfoAndFlag()
 
         // put country in favorite
         setButtonToAddInFavorite()
+
+        // set button appearance
+        lifecycleScope.launch(Dispatchers.IO) {
+            val alreadyAFavorite = isAFavorite()
+            setFavoriteButtonAppearance(alreadyAFavorite, favoriteCountryButton)
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -89,9 +100,6 @@ class DetailsCountryActivity : AppCompatActivity() {
             AppDataBase::class.java, "favorite-countries-db"
         ).build()
 
-        val favoriteCountryButton =
-            findViewById<ImageButton>(R.id.details_country_favorite_imagebutton)
-
         favoriteCountryButton.click {
             lifecycleScope.launch(Dispatchers.IO) {
                 val alreadyAFavorite = isAFavorite()
@@ -104,7 +112,20 @@ class DetailsCountryActivity : AppCompatActivity() {
                     country?.let { db.countryDao().delete(it) }
                     shortToast("This country has been deleted from your favorites")
                 }
+                withContext(Dispatchers.Main) {
+                    setFavoriteButtonAppearance(!alreadyAFavorite, favoriteCountryButton)
+                }
             }
+        }
+    }
+
+    private fun setFavoriteButtonAppearance(
+        alreadyAFavorite: Boolean, favoriteCountryButton: ImageButton
+    ) {
+        if (alreadyAFavorite) {
+            favoriteCountryButton.setImageResource(R.drawable.star_fill1_24)
+        } else {
+            favoriteCountryButton.setImageResource(R.drawable.star_24)
         }
     }
 
