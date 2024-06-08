@@ -15,8 +15,8 @@ class Retrofit {
         // increase time response cause restcountry is slow
         private val client = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
             .build()
 
         private val retrofit = Retrofit.Builder()

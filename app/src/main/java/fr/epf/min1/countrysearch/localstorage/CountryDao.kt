@@ -11,6 +11,9 @@ interface CountryDao {
     @Query("SELECT * FROM country")
     fun getAll(): List<Country>
 
+    @Query("SELECT * FROM country WHERE name = :name")
+    fun getCountryByName(name : String): Country?
+
     @Insert
     fun insertAll(vararg country: Country)
 
