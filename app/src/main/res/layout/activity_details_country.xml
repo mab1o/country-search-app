@@ -31,6 +31,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="16dp" />
 
+    <!-- Country Name -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom"
         android:layout_width="wrap_content"
@@ -41,18 +42,16 @@
     <!-- Country Flag -->
     <ImageView
         android:id="@+id/details_country_flag_imageview"
-        android:layout_width="145dp"
-        android:layout_height="0dp"
+        android:layout_width="150dp"
+        android:layout_height="197dp"
         android:contentDescription="@string/details_country_map_description"
         app:layout_constraintBottom_toTopOf="@id/details_country_capital_textview"
         app:layout_constraintEnd_toStartOf="@id/details_country_country_textview"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toTopOf="@+id/guideline_top"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_percent="0.4"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    <!-- Country Name -->
     <TextView
         android:id="@+id/details_country_country_textview"
         style="@style/TitleStyle"
@@ -73,6 +72,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
@@ -85,6 +85,7 @@
         style="@style/BodyTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/details_country_capital_textview"
@@ -96,6 +97,7 @@
         style="@style/BodyTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/details_country_continent_textview"
