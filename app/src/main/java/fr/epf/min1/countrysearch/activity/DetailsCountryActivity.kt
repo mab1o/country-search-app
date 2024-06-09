@@ -1,5 +1,6 @@
 package fr.epf.min1.countrysearch.activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.bumptech.glide.Glide
+import fr.epf.min1.countrysearch.MainActivity
 import fr.epf.min1.countrysearch.data.Country
 import fr.epf.min1.countrysearch.R
 import fr.epf.min1.countrysearch.data.click
@@ -55,10 +57,21 @@ class DetailsCountryActivity : AppCompatActivity() {
         // put country in favorite
         setButtonToAddInFavorite()
 
+        // home button
+        setHomeButton()
+
         // set button appearance
         lifecycleScope.launch(Dispatchers.IO) {
             val alreadyAFavorite = isAFavorite()
             setFavoriteButtonAppearance(alreadyAFavorite, favoriteCountryButton)
+        }
+    }
+
+    private fun setHomeButton() {
+        val homeButton = findViewById<ImageButton>(R.id.details_country_home_imagebutton)
+        homeButton.click {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
