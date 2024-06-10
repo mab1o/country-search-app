@@ -7,4 +7,7 @@ import retrofit2.http.Path
 interface CountryService {
     @GET("name/{name}")
     suspend fun getCountryByName(@Path("name") name: String): Response<List<CountryResult>>
+
+    @GET("capital/{capital}")
+    suspend fun getCountryByCapital(@Path("capital") capital: String): Response<List<CountryResult>>
 }

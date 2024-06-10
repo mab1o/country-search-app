@@ -7,21 +7,25 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.epf.min1.countrysearch.activity.FavoriteCountriesActivity
 import fr.epf.min1.countrysearch.activity.ListCountryAdapter
+import fr.epf.min1.countrysearch.api.CountryResult
 import fr.epf.min1.countrysearch.api.CountryService
 import fr.epf.min1.countrysearch.api.Retrofit
 import fr.epf.min1.countrysearch.data.Country
 import kotlinx.coroutines.runBlocking
+import retrofit2.Response
 
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
+    lateinit var choiceSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,9 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.VERTICAL,
             false
         )
+
+        // init Slider
+        choiceSpinner = findViewById(R.id.main_country_choice_spinner)
 
         // find country by Name
         setSearchButtonOnclick()
@@ -101,7 +108,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "Reaching API: try n°${currentRetry + 1} of $maxRetries")
             try {
                 Log.d(TAG, searchName)
-                val response = countryService.getCountryByName(searchName)
+                val response = searchByNameOrCapital(countryService, searchName)
                 if (response.isSuccessful && response.body() != null) {
                     Log.d(TAG, "${response.body()!!}")
                     countriesList = response.body()!!.map { it.toCountry() }
@@ -113,5 +120,19 @@ class MainActivity : AppCompatActivity() {
             currentRetry++
         }
         return countriesList
+    }
+
+    private suspend fun searchByNameOrCapital(
+        countryService: CountryService,
+        searchName: String
+    ): Response<List<CountryResult>> {
+        val choice = choiceSpinner.selectedItem
+
+        val response = if (choice == "by Capital") {
+            countryService.getCountryByCapital(searchName)
+        } else {
+            countryService.getCountryByName(searchName)
+        }
+        return response
     }
 }

@@ -26,7 +26,8 @@ L'application permet aux utilisateurs de rechercher des informations sur les pay
 
 ## Documentation Utilisateur
 * Recherche de Pays
-    * Dans la barre de recherche de l'application, entrez une partie du nom d'un pays.
+    * Dans la barre de recherche de l'application, entrez une partie du nom d'un pays ou de sa capital.
+    * Il faut par la suite selectionner "by Capital" ou "by Country" et appuyer sur search.
     * Les résultats s'afficheront sous forme de liste avec les drapeaux et les noms des pays correspondants.
 * Affichage des Fiches de Pays
     * Cliquez sur un pays dans la liste des résultats pour voir les détails complets de ce pays.
